@@ -3,6 +3,7 @@ const {json,urlencoded}=require('body-parser')
 const cors=require('cors');
 const session=require('express-session');
 const passport=require('passport');
+const mongoStore=require('connect-mongo');
 const passportlocal=require('./src/config/passport-local-strategy');
 const connect=require('./src/config/database');
 const router=require('./src/routes/index');
@@ -29,8 +30,17 @@ app.use(session({
     resave:false,
     cookie:{
         maxAge:6000000
-    }
-    }));
+    },
+    store: new mongoStore({
+           mongoUrl:'mongodb://localhost/twitter_dev',
+            autoRemove:'disable'
+    },function(err){
+        if(err){
+            console.error(err)
+        }
+        console.log('connect mongoSetup done!!!');
+    })
+    }))
 
 app.use(passport.initialize());
 app.use(passport.session());
