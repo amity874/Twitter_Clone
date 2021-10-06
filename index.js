@@ -1,11 +1,14 @@
 const express =require('express');
-
 const {json,urlencoded}=require('body-parser')
 const cors=require('cors');
+const session=require('express-session');
+const passport=require('passport');
+const passportlocal=require('./src/config/passport-local-strategy');
 const connect=require('./src/config/database');
 const router=require('./src/routes/index');
 var expressLayouts=require('express-ejs-layouts');
 const { ConnectionStates } = require('mongoose');
+const { rawListeners } = require('./src/models/User');
 const app=express();
 app.use(cors());
 app.use(json());
@@ -20,7 +23,20 @@ app.set('views','./src/views')
 
 
 
+app.use(session({
+    name:'twitter',
+    secret:'AmitInNodejs',
+    resave:false,
+    cookie:{
+        maxAge:6000000
+    }
+    }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/',router);
+
 app.listen(3000,async()=>{
     await connect();
     console.log('Server Started At 3000!!');
