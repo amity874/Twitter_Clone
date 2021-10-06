@@ -1,3 +1,4 @@
+const { session } = require('passport');
 const User = require('../models/User');
 // const user=require('../models/User');
 const profile=function(req,res){
@@ -44,10 +45,15 @@ const create=function(req,res){
 const createsession=function(res,res){
   return res.redirect('/');
 }
+const destroySession=function(req,res){
+  req.logout();
+  return res.redirect('/');
+}
 module.exports={
   profile,
   signUp,
   SigIn,
   create,
-  createsession
+  createsession,
+  destroySession
 };
