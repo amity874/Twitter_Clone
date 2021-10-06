@@ -1,9 +1,15 @@
 const express =require('express');
+
+const {json,urlencoded}=require('body-parser')
+const cors=require('cors');
 const connect=require('./src/config/database');
 const router=require('./src/routes/index');
 var expressLayouts=require('express-ejs-layouts');
 const { ConnectionStates } = require('mongoose');
 const app=express();
+app.use(cors());
+app.use(json());
+app.use(urlencoded({extended:true}));
 app.use(express.static(__dirname+'/src/assests'));
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
