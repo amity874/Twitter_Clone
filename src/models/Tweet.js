@@ -10,7 +10,7 @@ const  TweetSchema =new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',
         required:true
-    }
+    },
 },{timestamps:true});
 const Tweet=mongoose.model('Tweet',TweetSchema);
 module.exports=Tweet;
