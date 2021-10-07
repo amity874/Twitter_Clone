@@ -4,6 +4,7 @@ const cors=require('cors');
 const session=require('express-session');
 const passport=require('passport');
 const mongoStore=require('connect-mongo');
+// const sassMiddleware = require('node-sass-middleware');
 const passportlocal=require('./src/config/passport-local-strategy');
 const connect=require('./src/config/database');
 const router=require('./src/routes/index');
@@ -11,6 +12,13 @@ var expressLayouts=require('express-ejs-layouts');
 const { ConnectionStates } = require('mongoose');
 const { rawListeners } = require('./src/models/User');
 const app=express();
+// app.use(sassMiddleware({
+//     src: './src/assests/scss',
+//     dest: './src/assests/css',
+//     debug: true,
+//     outputStyle: 'expanded',
+//     prefix: '/css'
+// }));
 app.use(cors());
 app.use(json());
 app.use(urlencoded({extended:true}));
@@ -41,12 +49,10 @@ app.use(session({
         console.log('connect mongoSetup done!!!');
     })
     }))
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 app.use('/',router);
-
 app.listen(3000,async()=>{
     await connect();
     console.log('Server Started At 3000!!');
