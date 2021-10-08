@@ -10,8 +10,12 @@
 <% } %> 
 <div>
     <ul>
-        <% for(tweet of tweets){ %>
-            <li><h2><%= tweet.content %></h2></li>
+         <% for(tweet of tweets){ %>
+            <li><h2><%= tweet.content %></h2>
+                <% if(locals.user && locals.user.id==tweet.user.id) {%> 
+                <span><a href="/tweets/destroy/<%= tweet.id %>">Remove</a></span>
+                <% } %> 
+            </li>
             <small><b><%= tweet.user.name %></b></small>
             <div>
                 <% if (locals.user) { %>
