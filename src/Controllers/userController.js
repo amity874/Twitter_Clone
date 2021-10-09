@@ -1,8 +1,17 @@
 const { session } = require('passport');
 const User = require('../models/User');
-// const user=require('../models/User');
 const profile=function(req,res){
-  return  res.render('users/userProfile');
+  User.findById(req.params.id,function(err,user){
+    if(!user){
+      
+      return res.redirect('/');
+    }
+    return res.render('users/userProfile',{
+      title: 'User Profile',
+      Profile_user: user
+    });
+  })
+ 
 }
 const signUp=function(req,res){
   if(req.isAuthenticated()){
@@ -42,6 +51,19 @@ const create=function(req,res){
     }
   })
 }
+const update=function(req,res){
+  if(req.user.id==req.params.id){
+    User.findByIdAndUpdate(req.user.id,req.body,function(err,user){
+      if(err){
+        console.log('Error in Updating user');
+        return res.redirect('/');
+      }
+      return res.redirect('back');
+    })
+  }else{
+    return res.status(401).send('Unauthorised');
+  }
+}
 const createsession=function(res,res){
   return res.redirect('/');
 }
@@ -55,5 +77,6 @@ module.exports={
   SigIn,
   create,
   createsession,
-  destroySession
+  destroySession,
+  update
 };

@@ -1,4 +1,11 @@
 <link rel="stylesheet"href="/css/userProfile.css">
 <h1>User Profile Page</h1>
-<p><%=user.name%></p>
-<p><%=user.email%></p>
+<% if(user.id==Profile_user.id) { %>
+    <h3>Update Profile</h3>
+   <form action="/users/update/<%= Profile_user.id %> " method="POST">
+    <input type="text" name="name" placeholder="Your name" value="<%= Profile_user.name %>">
+    <input type="submit" value="Update User">
+   </form>
+<% } %>  
+<p><%= Profile_user.name %></p>
+<p><%= Profile_user.email %></p>
