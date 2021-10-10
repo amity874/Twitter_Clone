@@ -10,7 +10,7 @@ router.post('/create',create);
 router.post('/update/:id',passport.checkAuthentication,update);
 router.post('/create-session',passport.authenticate(
     'local',
-    {successRedirect:'/',failureRedirect:'/signin'}
+    {failureRedirect:'/signin'}
 ),createsession);
 router.get('/signout',destroySession);
 module.exports=router;

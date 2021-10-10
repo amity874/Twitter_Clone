@@ -6,6 +6,7 @@ const passport=require('passport');
 const mongoStore=require('connect-mongo');
 // const sassMiddleware = require('node-sass-middleware');
 var flash = require('connect-flash');
+const Noty=require('noty');
 const {setFlash}=require('./src/config/middleware');
 const passportlocal=require('./src/config/passport-local-strategy');
 const connect=require('./src/config/database');

@@ -63,12 +63,12 @@ const update=function(req,res){
   }
 }
 const createsession=function(req,res){
-  req.flash('success','SigneIn Successfully');
+  req.flash('success','Logged Successfully');
   return res.redirect('/');
 }
 const destroySession=function(req,res){
   req.logout();
-  req.flash('success','Signed Out Successfully');
+  req.flash('success','Logged Out Successfully');
   console.log(req);
   return res.redirect('/');
 }
