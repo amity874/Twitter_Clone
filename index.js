@@ -6,6 +6,8 @@ const passport=require('passport');
 const mongoStore=require('connect-mongo');
 // const sassMiddleware = require('node-sass-middleware');
 var flash = require('connect-flash');
+const multer  = require('multer')
+const upload = multer({ dest: './src/uploads/' })
 const Noty=require('noty');
 const {setFlash}=require('./src/config/middleware');
 const passportlocal=require('./src/config/passport-local-strategy');
@@ -34,7 +36,6 @@ app.set('view engine','ejs');
 app.set('views','./src/views')
 
 
-
 app.use(session({
     name:'twitter',
     secret:'AmitInNodejs',
@@ -58,6 +59,12 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(setFlash);
 app.use('/',router);
+// app.post('/profile', upload.single('avatar'), function (req, res, next) {
+//     // req.file is the `avatar` file
+//     // req.body will hold the text fields, if there were any
+//     console.log("Uploaded");
+//     return res.redirect('/ ');
+// });
 app.listen(3000,async()=>{
     await connect();
     console.log('Server Started At 3000!!');

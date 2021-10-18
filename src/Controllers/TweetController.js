@@ -6,7 +6,8 @@ const create=async function(req,res){
         await Tweet.create({
             content:req.body.content,
             user:req.user._id
-        })
+        });
+        req.flash('tweet_create','Tweet Created Successfully');
        return res.redirect('back');
     }
     catch (err){

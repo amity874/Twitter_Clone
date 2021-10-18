@@ -6,6 +6,11 @@
     <input type="text" name="name" placeholder="Your name" value="<%= Profile_user.name %>">
     <input type="submit" value="Update User">
    </form>
+
+<form action="/users/updatAvatar" method="post" enctype="multipart/form-data">
+    <input type="file" name="avatar" />
+    <input type="submit" value="Update Avatar">
+</form>
 <% } %>  
 <p><%= Profile_user.name %></p>
 <p><%= Profile_user.email %></p>

@@ -14,10 +14,10 @@ module.exports.root=async function(req,res){
                 path:'user'
             }
      }).sort({"createdAt":-1}).exec(); 
-        console.log(tweets);
+        // console.log(tweets);
         let fetchTweets=tweets;
         const users=await User.find({});
-        console.log(users);
+        // console.log(users);
             return res.render('home',{
             title:"Twitter",
             tweets:fetchTweets,

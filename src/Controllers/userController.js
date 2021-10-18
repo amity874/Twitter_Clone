@@ -1,8 +1,11 @@
 const { session } = require('passport');
-const User = require('../models/User'); const profile=function(req,res){
+const multer  = require('multer')
+const upload = multer({ dest: './src/uploads/' }) 
+// const {getFile, uploadFile} = require('../config/s3');
+const User = require('../models/User'); 
+const profile=function(req,res){
   User.findById(req.params.id,function(err,user){
     if(!user){
-      
       return res.redirect('/');
     }
     return res.render('users/userProfile',{
@@ -63,14 +66,36 @@ const update=function(req,res){
   }
 }
 const createsession=function(req,res){
-  req.flash('success','Logged Successfully');
+  req.flash('success','Logged In Successfully');
   return res.redirect('/');
 }
 const destroySession=function(req,res){
   req.logout();
-  req.flash('success','Logged Out Successfully');
+  req.flash('info','Logged Out Successfully');
   console.log(req);
   return res.redirect('/');
+}
+const updateAvatar = async function(req, res) {
+  const file = req.file;
+  try {
+      const result = await uploadFile(file);
+      unlinkSync(file.path);
+      const currentUser = req.user.id;
+      console.log("currentuser", currentUser);
+      await User.findByIdAndUpdate(currentUser, {avatar: result.key}, function(err, user) {
+          if(err) {
+              console.log(err);
+              return res.redirect('/');
+          }
+          return res.redirect('back');
+      })
+      console.log(result);
+  } catch(err) {
+      console.log(err);
+      return res.redirect('/');
+  }
+  // console.log(file);
+  // console.log(result);
 }
 module.exports={
   profile,
@@ -79,5 +104,6 @@ module.exports={
   create,
   createsession,
   destroySession,
-  update
+  update,
+  updateAvatar
 };
