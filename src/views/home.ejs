@@ -1,7 +1,7 @@
 <h1>Welcome to <%=title%></h1>
 <% if (locals.user){ %> 
 <section>
-    <h4>Create A tweet</h4>
+    <h4>Create A tweet <%=user.name%></h4>
     <form action="/tweets/create" method="POST">
         <textarea name="content" id="" cols="30" rows="10" placeholder="Your Tweet..." required></textarea>
         <input type="submit" value="Create Tweet">
@@ -17,9 +17,9 @@
 </div>
 <section>
     <h3>Users</h3>
-    <% for(user of users){ %>
+    <% for(current_user of users){ %>
         <p> 
-            <a href="/users/profile/<%= user.id %> "><%= user.name%> </a>
+            <a href="/users/profile/<%= current_user.id %> "><%= current_user.name%> </a>
         </p>
     <% } %>  
 </section>
@@ -30,6 +30,6 @@
 <script src="/js/chat_engine.js"></script>
 <% if(locals.user){ %> 
 <script>
-    new ChatEngine('chat-input','<%=locals.user._id %>')
+    new ChatEngine('chat-input','<%=locals.user.email %>')
 </script>
 <% } %>
