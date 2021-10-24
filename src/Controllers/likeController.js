@@ -4,7 +4,7 @@ const Tweet = require('../models/tweet');
 
 const toggleLike = async function(req, res) {
     // /likes/toggle?id=dcsc&type=Tweet
-    try {
+    try { 
         let likeable;
         let deleted = false;
 

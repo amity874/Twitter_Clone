@@ -8,6 +8,11 @@ const mongoStore=require('connect-mongo');
 var flash = require('connect-flash');
 const multer  = require('multer')
 const upload = multer({ dest: './src/uploads/' })
+
+
+
+
+
 const Noty=require('noty');
 const {setFlash}=require('./src/config/middleware');
 const passportlocal=require('./src/config/passport-local-strategy');
@@ -17,6 +22,16 @@ var expressLayouts=require('express-ejs-layouts');
 const { ConnectionStates } = require('mongoose');
 const { rawListeners } = require('./src/models/User');
 const app=express();
+
+
+app.use(cors());
+
+const chatEngine=require('http').Server(app)
+const {socket}=require('./src/config/socket');
+const chatSocket=socket(chatEngine); 
+
+chatEngine.listen(3001);
+console.log("chat Engine Listening at 3001");
 // app.use(sassMiddleware({
 //     src: './src/assests/scss',
 //     dest: './src/assests/css',
@@ -24,7 +39,6 @@ const app=express();
 //     outputStyle: 'expanded',
 //     prefix: '/css'
 // }));
-app.use(cors());
 app.use(json());
 app.use(urlencoded({extended:true}));
 app.use(express.static(__dirname+'/src/assests'));
@@ -34,7 +48,6 @@ app.use(expressLayouts);
 app.set('layout',__dirname+'/src/views/layouts/layout');
 app.set('view engine','ejs');
 app.set('views','./src/views')
-
 
 app.use(session({
     name:'twitter',
