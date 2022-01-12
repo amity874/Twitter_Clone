@@ -30,4 +30,4 @@
 
 Here is a demo  of the application 👇.
 
-![img](../Twitter_Clone/src/snaps/LOggedIn.png)
+![img](https://github.com/amity874/Twitter_Clone/blob/master/src/snaps/LOggedIn.png.png)
