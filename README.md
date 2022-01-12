@@ -28,5 +28,6 @@
 
 #Live chatting
 
-Here is a demo video of the application 👇.
+Here is a demo  of the application 👇.
 
+![This is an image](/src/snaps/LOggedIn.png)
