@@ -2,31 +2,31 @@
 
 #This is a NodeJS based web application
 
-   To get started and run the app:
+To get started and run the app:
 
-     . Clone the project
+   . Clone the project
 
-     . Run npm install to install the corresponding node packages
+   . Run npm install to install the corresponding node packages
 
-     . Run npm start to run the app on http://localhost:3000
+   . Run npm start to run the app on http://localhost:3000
 
 #Features Of the application:
 
-    . Login and SignUp to the application
+   . Login and SignUp to the application
 
-    . Create new task to be shared
+   . Create new task to be shared
 
-    . Live Tweet Sharing
+   . Live Tweet Sharing
 
-    . Notification of tweet
+   . Notification of tweet
 
-    . user will get a email notification if someone commented in her tweet
+   . user will get a email notification if someone commented in her tweet
 
-    . Live highlighting
+   . Live highlighting
 
-    . Multiple user can make a group and chat simultaneously
+   . Multiple user can make a group and chat simultaneously
 
-#Live chatting
+Live chatting
 
 Here is a demo  of the application 👇.
 
