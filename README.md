@@ -30,4 +30,4 @@
 
 Here is a demo  of the application 👇.
 
-![This is an image](/src/snaps/LOggedIn.png)
+![img](src/snaps/LOggedIn.png)
