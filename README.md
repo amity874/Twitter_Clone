@@ -31,3 +31,9 @@
 Here is a demo  of the application 👇.
 
 ![img](https://github.com/amity874/Twitter_Clone/blob/master/src/snaps/LOggedIn.png.png)
+
+![img](https://github.com/amity874/Twitter_Clone/blob/master/src/snaps/logout.png.png)
+
+![img](https://github.com/amity874/Twitter_Clone/blob/master/src/snaps/Tweet.png.png)
+
+![img](https://github.com/amity874/Twitter_Clone/blob/master/src/snaps/Users.png.png)
