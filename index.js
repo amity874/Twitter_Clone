@@ -8,11 +8,6 @@ const mongoStore=require('connect-mongo');
 var flash = require('connect-flash');
 const multer  = require('multer')
 const upload = multer({ dest: './src/uploads/' })
-
-
-
-
-
 const Noty=require('noty');
 const {setFlash}=require('./src/config/middleware');
 const passportlocal=require('./src/config/passport-local-strategy');
